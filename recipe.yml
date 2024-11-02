@@ -1,4 +1,4 @@
-name: Vanilla Pico
+name: MinOS Pico
 id: pico
 
 stages:
@@ -6,7 +6,7 @@ stages:
   base: scratch
   singlelayer: true
   labels:
-    maintainer: Vanilla OS Contributors
+    maintainer: Minute Games, Vanilla OS Contributors
   adds:
     - srcdst:
         rootfs/vanilla-pico.tar.zst: /
