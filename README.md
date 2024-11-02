@@ -1,6 +1,8 @@
-# Vanilla OS Pico Image
+# MinOS Pico Image
 
-Containerfile for building a Vanilla OS Pico image.
+Containerfile for building a MinOS/VanillaOS Pico image.
+
+This fork of the [Vanilla OS Pico](https://github.com/vanilla-os/pico-image) image uses the **Debian Stable** repository rather than Debian Sid.
 
 > [!NOTE]
 > This image is not intended to be used directly. It is used as a base image for the [Vanilla OS Core](https://github.com/vanilla-os/core-image) image.
