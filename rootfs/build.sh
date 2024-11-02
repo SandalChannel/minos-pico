@@ -2,7 +2,7 @@
 
 # Rootfs definitions
 ROOTFS_NAME="vanilla-pico"
-REPO_URL=http://repo2.vanillaos.org
+REPO_URL=http://deb.debian.org/debian
 REPO_KEY=vanilla.key
 CUSTOM_PACKAGE=""
 CLEANUP_DIRS="/usr/share/doc/*
@@ -44,17 +44,18 @@ debootstrap \
     --variant=minbase \
     --include=$CUSTOM_PACKAGE,apt-utils,apt-transport-https,ca-certificates,gnupg2,bash,bzip2 \
     --keyring=includes.rootfs/usr/share/keyrings/vanilla_keyring.gpg \
-    sid \
+    stable \
     $ROOTFS_NAME \
     $REPO_URL
 
 # Add the vanilla extra repository key
 chroot $ROOTFS_NAME apt-key add /$REPO_KEY
 
-# We need to remove the sources.list file since it is not needed
-# after the debootstrap process. include.chroot already contains
-# the correct sources.list file.
-rm -rf $ROOTFS_NAME/etc/apt/sources.list
+# Ensure the sources.list file uses Debian Stable
+echo "deb http://deb.debian.org/debian stable main contrib non-free non-free-firmware" > $ROOTFS_NAME/etc/apt/sources.list
+echo "deb http://deb.debian.org/debian stable-updates main contrib non-free non-free-firmware" >> $ROOTFS_NAME/etc/apt/sources.list
+echo "deb http://security.debian.org/debian-security stable-security main contrib non-free non-free-firmware" >> $ROOTFS_NAME/etc/apt/sources.list
+echo "deb http://deb.debian.org/debian stable-backports main contrib non-free non-free-firmware" >> $ROOTFS_NAME/etc/apt/sources.list
 
 # Cleanup
 chroot $ROOTFS_NAME apt update
