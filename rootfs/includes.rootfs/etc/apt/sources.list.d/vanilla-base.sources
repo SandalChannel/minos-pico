@@ -1,6 +1,6 @@
 Types: deb
-URIs: http://repo2.vanillaos.org/
-Suites: sid
+URIs: http://deb.debian.org/debian
+Suites: stable
 Architectures: amd64
 Components: main contrib non-free non-free-firmware
-Signed-By: /usr/share/keyrings/vanilla_keyring.gpg
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
